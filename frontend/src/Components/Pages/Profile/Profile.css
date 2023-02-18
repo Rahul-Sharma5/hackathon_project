@@ -1,0 +1,9 @@
+.bg-surface-secondary {
+    --x-bg-opacity: none !important;
+    background-color: none !important;
+}
+
+/* .bg-surface-secondary {
+    --x-bg-opacity: 1;
+    background-color: rgba(var(--x-surface-secondary-rgb), var(--x-bg-opacity)) !important;
+} */

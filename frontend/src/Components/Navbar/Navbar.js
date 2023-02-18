@@ -7,7 +7,7 @@ const Navbar = () => {
             <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 py-3">
                 <div class="container-xl">
 
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/">
                         <img src="https://preview.webpixels.io/web/img/logos/clever-primary.svg" class="h-8" alt="logo" />
                     </a>
 
@@ -18,10 +18,10 @@ const Navbar = () => {
                     <div class="collapse navbar-collapse" id="navbarCollapse">
 
                         <div class="navbar-nav mx-lg-auto">
-                            <a class="nav-item nav-link active" href="#" aria-current="page">Home</a>
-                            <a class="nav-item nav-link" href="#">Profile</a>
-                            <a class="nav-item nav-link" href="#">Contact</a>
-                            <a class="nav-item nav-link" href="#">FAQ</a>
+                            <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
+                            <a class="nav-item nav-link" href="/profile">Profile</a>
+                            <a class="nav-item nav-link" href="/contact">Contact</a>
+                            <a class="nav-item nav-link" href="/faq">FAQ</a>
                         </div>
 
                        
@@ -34,7 +34,7 @@ const Navbar = () => {
                         </div>
 
                         <div class="d-flex align-items-lg-center mt-1 mt-lg-0 px-1">
-                            <a href="signup" class=" button is-primary  w-full w-lg-auto">
+                            <a href="/signup" class=" button is-primary  w-full w-lg-auto">
                                 Register
                             </a>
                         </div>
