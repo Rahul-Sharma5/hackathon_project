@@ -1,0 +1,6 @@
+.btn-lg, .btn-group-lg>.btn {
+    --x-btn-padding-y: 0.8rem;
+    --x-btn-padding-x: 8.5rem !important;
+    --x-btn-font-size: 1rem;
+    --x-btn-border-radius: 0.5rem;
+}

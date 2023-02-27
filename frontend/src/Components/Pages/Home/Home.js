@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import './Home.css'
+import { useNavigate } from 'react-router-dom'
+import jwt_decode from "jwt-decode";
+
 import Footer from '../../Footer/Footer'
 import Navbar from '../../Navbar/Navbar'
 import Homedes from '../Homedescription/Homedes'
@@ -6,6 +10,7 @@ import Service from '../ServiceCenter/Service'
 import Upload from '../UploadDocs/Upload'
 
 const Home = () => {
+    const navigate = useNavigate();
 
     const [home, sethome] = useState(true)
     const [uploadformView, setuploadformView] = useState(false)
@@ -23,6 +28,66 @@ const Home = () => {
         sethome(!home)
     }
 
+    useEffect(() => {
+
+        var token = localStorage.getItem("auth");
+        if (token != null) {
+            var decoded = jwt_decode(token);
+            checkPrevData(decoded)
+        }
+
+
+
+    }, [])
+    const [dataFound, setDataFound] = useState(false);
+    const checkPrevData = async (decoded) => {
+        const response = await fetch(`http://localhost:5000/uservalidate/${decoded.email}`, {
+            method: 'GET',
+        })
+        const data = await response.json();
+        if (data['result'].length == 0) {
+            alert("Upload Certificate for this Year")
+        } else {
+
+
+            data['result'].map((data) => {
+                if (data.year == new Date().getFullYear()) {
+                    setDataFound(true)
+
+                }
+
+            })
+
+            if (!dataFound) {
+                const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                const d = new Date();
+                let monthname = month[d.getMonth()];
+
+                var token123 = localStorage.getItem("auth");
+                var decoded123 = jwt_decode(token123);
+                if (decoded123.pensionType == "Family pension") {
+                    if (monthname == 'November') {
+                        alert("Upload Your Certificate for this Year  " + new Date().getFullYear())
+                    }
+                }
+                if (decoded123.pensionType == "Pension for self") {
+                    if (monthname == 'January') {
+                        alert("Upload Your Certificate for this Year  " + new Date().getFullYear())
+                    }
+                }
+
+
+
+
+            }
+
+
+
+        }
+
+
+
+    }
     return (
         <>
             <Navbar />
@@ -88,13 +153,21 @@ const Home = () => {
                                         Already submitted Digital Life Certificates since 2014
                                     </p>
 
-                                    <div className="mx-n2">
+                                    {/*                                     <div className="mx-n2">
                                         <button onClick={uploadfromview} className="btn btn-lg btn-primary shadow-sm mx-2 px-lg-8">
                                             Upload Certificate
                                         </button>
                                         <button onClick={servicecenterview} className="btn btn-lg btn-neutral shadow-sm mx-2 px-lg-8">
                                             Nearest Branch
                                         </button>
+                                    </div> */}
+                                    <div class="mx-n2">
+                                        <a onClick={uploadfromview} class="btn btn-lg btn-primary shadow-2 mx-2 px-lg-8 mb-2 px-5">
+                                            Upload Certificate
+                                        </a>
+                                        <a onClick={servicecenterview} class="btn btn-lg btn-neutral shadow-2 mx-2 px-lg-8 mb-2 px-5">
+                                            &nbsp;Nearest Branch &nbsp;
+                                        </a>
                                     </div>
                                 </div>
                             </div>

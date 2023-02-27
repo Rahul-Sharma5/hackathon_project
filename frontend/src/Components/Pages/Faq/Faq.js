@@ -1,9 +1,11 @@
 import React from 'react'
+import Navbar from '../../Navbar/Navbar'
 import './Faq.css'
 
 const Faq = () => {
     return (
         <>
+        <Navbar/>
             <div className='container'>
                 <section id="faq" class="faq">
                     <div class="container">

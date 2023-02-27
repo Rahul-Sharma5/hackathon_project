@@ -11,7 +11,7 @@ const Footer = () => {
                         <div class="row">
 
                             <div class="col-lg-3 col-md-6 footer-contact">
-                                <h3>Demo</h3>
+                                <h3>JEEVAN PRAMAAN</h3>
                                 <p>
                                     Sitla Colony, Bihar <br />
                                     India 800007 <br /><br />
